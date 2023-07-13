@@ -5,36 +5,41 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class TestBankAccount {
 
+//    TEST SETTERS AND GETTERS
     BankAccount bankAccount;
     @BeforeEach
-    public void setUp() {bankAccount = new BankAccount();}
+    public void setUp() {
+        bankAccount = new BankAccount("Carolina", "Horman", "12.08.2000", 123456789);}
 
     @Test
     public void testGetFirstName(){
+//        GIVEN (in @BeforeEach)
+//        WHEN
         String result = bankAccount.getFirstName();
+//        THEN
         String expected = "Carolina";
         assertThat(result).isEqualTo(expected);
     }
 
     @Test
     public void testSetFirstName(){
+//        Shorter way of writing:
         bankAccount.setFirstName("Carolina");
-        String result = bankAccount.getFirstName();
-        String expected = "Carolina";
-        assertThat(result).isEqualTo(expected);
+        assertThat(bankAccount.getFirstName()).isEqualTo("Carolina");
     }
 
     @Test
     public void testGetLastName(){
-        String result = bankAccount.getLastName();
-        String expected = "Horman";
-        assertThat(result).isEqualTo(expected);
+        assertThat(bankAccount.getLastName()).isEqualTo("Horman");
     }
 
     @Test
     public void testSetLastName(){
+//        GIVEN
         bankAccount.setLastName("Horman");
+//        WHEN
         String result = bankAccount.getLastName();
+//        THEN
         String expected = "Horman";
         assertThat(result).isEqualTo(expected);
     }
@@ -71,36 +76,35 @@ public class TestBankAccount {
 
     @Test
     public void testGetBalance(){
-        int result = bankAccount.getBalance();
-        int expected = 0;
-        assertThat(result).isEqualTo(expected);
+        assertThat(bankAccount.getBalance()).isEqualTo(0);
     }
 
     @Test
     public void testSetBalance(){
         bankAccount.setAccountNumber(0);
-        int result = bankAccount.getBalance();
-        int expected = 0;
-        assertThat(result).isEqualTo(expected);
+        assertThat(bankAccount.getBalance()).isEqualTo(0);
     }
 
+//    TEST DEPOSIT, WITHDRAWAL AND INTEREST
     @Test
     public void testDeposit(){
         bankAccount.deposit(100);
-        int result = bankAccount.getBalance();
-        int expected = 100;
-        assertThat(result).isEqualTo(expected);
+        assertThat(bankAccount.getBalance()).isEqualTo(100);
     }
 
     @Test
     public void testWithdrawal(){
+//        GIVEN
         bankAccount.deposit(110);
         bankAccount.withdrawal(50);
+//        WHEN
         int result = bankAccount.getBalance();
+//        THEN
         int expected = 60;
         assertThat(result).isEqualTo(expected);
     }
 
+    @Test
     public void testInterest(){
         bankAccount.deposit(100);
         bankAccount.interest(1.02);

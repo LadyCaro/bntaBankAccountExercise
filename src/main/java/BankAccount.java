@@ -7,11 +7,11 @@ public class BankAccount {
     private int balance;
 
 
-    public BankAccount(){
-        this.firstName = "Carolina";
-        this.lastName = "Horman";
-        this.dateOfBirth = "12.08.2000";
-        this.accountNumber = 123456789;
+    public BankAccount(String firstName, String lastName, String dateOfBirth, int accountNumber){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.accountNumber = accountNumber;
         this.balance = 0;
     }
 
